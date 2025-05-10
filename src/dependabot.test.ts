@@ -6,17 +6,19 @@ describe("extractDependabotMetadata", () => {
     const commitMessage = `
 ---
 updated-dependencies:
-  - dependency-name: "example-library"
-    previous-version: "1.0.0"
-    new-version: "1.1.0"
+- dependency-name: com.fasterxml.jackson:jackson-bom
+  dependency-version: 2.19.0
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: all-dependencies
 ...
         `;
     const result = await extractDependabotMetadata(commitMessage);
 
     expect(result).toEqual([
       {
-        dependencyName: "example-library",
-        newVersion: "1.1.0",
+        dependencyName: "com.fasterxml.jackson:jackson-bom",
+        newVersion: "2.19.0",
       },
     ]);
   });

@@ -19,7 +19,7 @@ export async function extractDependabotMetadata(
       return Promise.all(
         data["updated-dependencies"].map(async (dependency: any) => {
           const dependencyName = dependency["dependency-name"];
-          const newVersion = dependency["new-version"];
+          const newVersion = dependency["dependency-version"];
           return {
             dependencyName,
             newVersion,
