@@ -27,8 +27,10 @@ export function createChangelogEntry(
     )
     .up();
 
-  return entryBuilder.up().toString({
-    prettyPrint: true,
-    width: 120,
-  });
+  return entryBuilder
+    .end({
+      prettyPrint: true,
+      width: 120,
+    })
+    .concat("\n");
 }
