@@ -1,0 +1,6 @@
+# Build folders
+/coverage/
+/node_modules/
+/src/**/*.js
+# IDEA
+/.idea/
