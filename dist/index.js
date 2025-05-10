@@ -65071,10 +65071,12 @@ function createChangelogEntry(dependency, issueId, issueUrl) {
         .ele("description", { format: "asciidoc" })
         .txt(`Updated dependency ${dependency.dependencyName} to version ${dependency.newVersion}`)
         .up();
-    return entryBuilder.up().toString({
+    return entryBuilder
+        .end({
         prettyPrint: true,
         width: 120,
-    });
+    })
+        .concat("\n");
 }
 
 
@@ -65100,7 +65102,7 @@ async function extractDependabotMetadata(commitMessage) {
             /* eslint-disable @typescript-eslint/no-explicit-any */
             return Promise.all(data["updated-dependencies"].map(async (dependency) => {
                 const dependencyName = dependency["dependency-name"];
-                const newVersion = dependency["new-version"];
+                const newVersion = dependency["dependency-version"];
                 return {
                     dependencyName,
                     newVersion,
